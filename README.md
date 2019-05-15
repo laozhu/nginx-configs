@@ -2,6 +2,35 @@
 
 _My personal server's nginx configs, optimized for HTTPS and HTTP2_
 
+## Install
+
+```bash
+sudo apt install nginx
+sudo apt install certbot python-certbot-nginx
+sudo certbot --nginx certonly
+```
+
+Then copy nginx configs to your server's `/etc/nginx` folder
+
+```bash
+ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/example.com.conf
+```
+
+Change the `server_name: example.com` and `root /home/ritchie/www/example.com` of server to yours.
+
+## Test
+
+```bash
+sudo nginx -t
+sudo nginx reload
+```
+
+Test and change your configs until it's OK ✅.
+
+## Renew
+
+If certificate is getting expired in next 30 days, certbot will renew certificates automatically.
+
 ## Credits
 
 - [Let’s Encrypt](https://letsencrypt.org/)
